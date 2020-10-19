@@ -1,0 +1,4 @@
+id:
+  type: string
+  pattern: '^\d{24}$'
+  description: ID

@@ -1,0 +1,5 @@
+enumClassPrefix: true
+featureCORS: true
+serverPort: 8000
+packageName: server
+sourceFolder: server

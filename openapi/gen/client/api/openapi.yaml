@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  description: Try OpenAPI 3
+  title: openapi-tryout
+  version: "0.1"
+servers:
+- url: http://localhost:8001/api/v1
+paths:
+  /echo:
+    get:
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                example: living
+                type: string
+          description: echos that API living or dead
+  /account:
+    get:
+      description: |
+        listup users in this service
+      parameters:
+      - in: query
+        name: offset
+        schema:
+          type: integer
+      - in: query
+        name: limit
+        schema:
+          type: integer
+      - in: query
+        name: userName
+        schema:
+          type: string
+      responses:
+        default:
+          description: error
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/user'
+                type: array
+          description: ok
+components:
+  schemas:
+    user:
+      example:
+        name: John Smith
+        id: ""
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/id'
+          - description: An ID of the user
+        name:
+          example: John Smith
+          maxLength: 100
+          type: string
+      type: object
+    userName:
+      example: John Smith
+      maxLength: 100
+      type: string
+    id:
+      description: ID
+      pattern: ^\d{24}$
+      type: string

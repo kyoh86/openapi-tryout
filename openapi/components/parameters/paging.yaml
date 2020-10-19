@@ -1,0 +1,10 @@
+offset:
+  name: offset
+  in: query
+  schema:
+    type: integer
+limit:
+  name: limit
+  in: query
+  schema:
+    type: integer

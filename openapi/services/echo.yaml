@@ -1,0 +1,11 @@
+paths:
+  /echo:
+    get:
+      responses:
+        default:
+          description: echos that API living or dead
+          content:
+            application/json:
+              schema:
+                type: string
+                example: living

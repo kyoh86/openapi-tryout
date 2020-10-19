@@ -1,0 +1,28 @@
+components:
+  parameters:
+    userName:
+      name: userName
+      in: query
+      schema:
+        type: string
+
+paths:
+  /account:
+    get:
+      description: |
+        listup users in this service
+      parameters:
+        - $ref: "../components/parameters/paging.yaml#/offset"
+        - $ref: "../components/parameters/paging.yaml#/limit"
+        - $ref: "#/components/parameters/userName"
+      responses:
+        default:
+          description: error
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "../components/schemas/user.yaml#/user"
